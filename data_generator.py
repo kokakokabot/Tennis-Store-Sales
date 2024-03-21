@@ -18,13 +18,17 @@ def adjust_data(rows, start_date, end_date):
         if product_name == "Tennis Racket":
             sale_price = round(random.uniform(100, 200), 2)
             quantity_sold = random.randint(1, 2)
+            cost_price = round(sale_price * random.uniform(0.6, 0.8), 2)  # Cost price is 60-80% of sale price
         elif product_name == "Tennis Shoes":
             sale_price = round(random.uniform(80, 150), 2)
             quantity_sold = random.randint(1, 3)
+            cost_price = round(sale_price * random.uniform(0.6, 0.8), 2)
         else:
             sale_price = round(random.uniform(20, 70), 2)
             quantity_sold = random.randint(2, 5)
+            cost_price = round(sale_price * random.uniform(0.7, 0.9), 2)  # Assuming a smaller margin for accessories
         
+        profit = round((sale_price - cost_price) * quantity_sold, 2)  # Profit calculation
         retail_price = round(sale_price + random.uniform(5, 20), 2)
         discount_amount = round(retail_price - sale_price, 2)
         sales_channel = random.choice(["Online", "In-store"])  # Define sales_channel
@@ -54,6 +58,7 @@ def adjust_data(rows, start_date, end_date):
             return_status,  # Return Status
             reason_for_return,  # Reason for Return
             customer_feedback,  # Customer Feedback
+            profit, # Profit 
             random.choice(["North America", "Europe", "Asia"]),  # Region
             random.choice(["New York", "Paris", "Tokyo", "Online"]) if sales_channel == "In-store" else "Online"  # Store Location
         ])
@@ -79,7 +84,7 @@ columns = [
     "Product ID", "Product Name", "Category", "Brand", "Model", "SKU", "Quantity Sold",
     "Sale Price", "Retail Price", "Discount Amount", "Sale Date", "Customer ID",
     "Sales Channel", "Payment Method", "Shipping Cost", "Shipping Time", "Return Status",
-    "Reason for Return", "Customer Feedback", "Region", "Store Location"
+    "Reason for Return", "Customer Feedback", "Profit", "Region", "Store Location"
 ]
 
 
