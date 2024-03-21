@@ -63,9 +63,16 @@ def adjust_data(rows, start_date, end_date):
 np.random.seed(42)
 random.seed(42)
 
-# June 2023 & 2023 Data Generation
-rows_per_month = 2000  # Number of rows for each month
-adjusted_data = adjust_data(rows_per_month * 2, datetime(2022, 6, 1), datetime(2023, 6, 30))
+# Start & End Date
+start_date = datetime(2022, 1, 1)
+end_date = datetime(2023, 12, 31)
+
+# Number of Rows
+rows = 20000
+
+# Generating Data
+adjusted_data = adjust_data(rows, start_date, end_date)
+
 
 # Column name generation
 columns = [
